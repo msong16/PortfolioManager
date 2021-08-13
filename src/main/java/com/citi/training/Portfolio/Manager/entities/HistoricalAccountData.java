@@ -18,16 +18,19 @@ public class HistoricalAccountData implements Serializable{
     private Date date;
     @Column(name="cash")
     private Double cash;
+    @Column(name="investment")
+    private Double investment;
     @Column(name="networth")
     private Double networth;
 
     public HistoricalAccountData() {}
 
-    public HistoricalAccountData(int id, int account_id, Date date, Double cash, Double networth) {
+    public HistoricalAccountData(int id, int account_id, Date date, Double cash,Double investment, Double networth) {
         this.id = id;
         this.account_id = account_id;
         this.date = date;
         this.cash = cash;
+        this.investment = investment;
         this.networth = networth;
     }
 
@@ -69,5 +72,13 @@ public class HistoricalAccountData implements Serializable{
 
     public void setNetworth(Double networth) {
         this.networth = networth;
+    }
+
+    public Double getInvestment() {
+        return investment;
+    }
+
+    public void setInvestment(Double investment) {
+        this.investment = investment;
     }
 }
