@@ -6,13 +6,13 @@ import java.util.Date;
 
 @Entity
 @Table(name="transactions")
-public class Transactions implements Serializable {
+public class Transaction implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
     @Column(name="account_id")
-    private int account_id;
+    private int accountId;
     @Column(name="date")
     private Date date;
     @Column(name="b_or_s")
@@ -24,12 +24,12 @@ public class Transactions implements Serializable {
     @Column(name="price_per_share")
     private Double price_per_share;
 
-    public Transactions() {
+    public Transaction() {
     }
 
-    public Transactions(int id, int account_id, Date date, Character b_or_s, String stock_name, Integer shares, Double price_per_share) {
+    public Transaction(int id, int account_id, Date date, Character b_or_s, String stock_name, Integer shares, Double price_per_share) {
         this.id = id;
-        this.account_id = account_id;
+        this.accountId = account_id;
         this.date = date;
         this.b_or_s = b_or_s;
         this.stock_name = stock_name;
@@ -46,11 +46,11 @@ public class Transactions implements Serializable {
     }
 
     public int getAccount_id() {
-        return account_id;
+        return accountId;
     }
 
     public void setAccount_id(int account_id) {
-        this.account_id = account_id;
+        this.accountId = account_id;
     }
 
     public Date getDate() {
