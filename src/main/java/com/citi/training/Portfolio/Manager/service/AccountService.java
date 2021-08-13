@@ -7,4 +7,5 @@ public interface AccountService {
     Account getAccountById(int id);
 
     Iterable<Account> getAllAccounts();
+    Account addNewAccount(Account account);
 }

@@ -22,6 +22,14 @@ public class AccountController {
     public Iterable<Account> getAccounts(){
 
         return accountService.getAllAccounts();
-
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public void createAccount(@RequestBody Account account) {
+
+        accountService.addNewAccount(account);
+        //maybe a log for successful account creation? or if there were issues
+        //send a different api response method
+    }
+
 }
