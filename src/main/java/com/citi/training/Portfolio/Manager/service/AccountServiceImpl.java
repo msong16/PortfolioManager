@@ -29,4 +29,11 @@ public class AccountServiceImpl implements AccountService {
     public Iterable<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
+
+    @Override
+    public Account addNewAccount(Account account) {
+        //add logic to make sure user has name + email etc
+        return accountRepository.save(account);
+    }
+
 }
