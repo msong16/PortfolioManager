@@ -9,6 +9,6 @@ import java.util.List;
 public interface HistoricalAccountDataService {
     //Iterable<HistoricalAccountData> getHistory();
 
-    List<HistoricalAccountData> getDataById(Iterable<Integer> ids);
+    List<HistoricalAccountData> getDataById(int id);
     Iterable<HistoricalAccountData> getAllData();
 }

@@ -18,15 +18,19 @@ import java.util.Optional;
 public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataService {
     @Autowired
     private HistoricalAccountDataRepository historicalAccountDataRepository;
-//    @Transactional(propagation = Propagation.REQUIRED)
+
+    //@Transactional(propagation = Propagation.REQUIRED)
     public Iterable<HistoricalAccountData> getAllData() {
         return historicalAccountDataRepository.findAll();
 
     }
 
-    public List<HistoricalAccountData> getDataById(Iterable<Integer> ids){
+    @Override
+    public List<HistoricalAccountData> getDataById(int id){
         //List<HistoricalAccountData> data =  historicalAccountDataRepository.findAll();
-        List<HistoricalAccountData> data =  historicalAccountDataRepository.findAllById(ids);
-        return data;
+        //List<HistoricalAccountData> data =  historicalAccountDataRepository.findAllByAccount_id(id);
+       return historicalAccountDataRepository.findAllByAccountId(id);
+       //return null;
+        //return data;
     }
 }
