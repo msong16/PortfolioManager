@@ -1,0 +1,73 @@
+package com.citi.training.Portfolio.Manager.entities;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
+
+
+@Entity
+@Table(name="historicalAccountData")
+public class HistoricalAccountData implements Serializable{
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
+    @Column(name="account_id")
+    private int account_id;
+    @Column(name="date")
+    private Date date;
+    @Column(name="cash")
+    private Double cash;
+    @Column(name="networth")
+    private Double networth;
+
+    public HistoricalAccountData() {}
+
+    public HistoricalAccountData(int id, int account_id, Date date, Double cash, Double networth) {
+        this.id = id;
+        this.account_id = account_id;
+        this.date = date;
+        this.cash = cash;
+        this.networth = networth;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(int account_id) {
+        this.account_id = account_id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Double getCash() {
+        return cash;
+    }
+
+    public void setCash(Double cash) {
+        this.cash = cash;
+    }
+
+    public Double getNetworth() {
+        return networth;
+    }
+
+    public void setNetworth(Double networth) {
+        this.networth = networth;
+    }
+}

@@ -10,21 +10,18 @@ public class Account implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
-
     @Column(name="name")
     private String name;
-    @Column(name="cash")
-    private Double cash;
-    @Column(name="networth")
-    private Double netWorth;
+    @Column(name="email")
+    private String email;
+
 
     public Account(){}
 
-    public Account(int id, String name, Double cash, Double netWorth) {
+    public Account(int id, String name, String email) {
         this.id = id;
         this.name = name;
-        this.cash = cash;
-        this.netWorth = netWorth;
+        this.email = email;
     }
 
     public int getId() {
@@ -43,20 +40,11 @@ public class Account implements Serializable {
         this.name = name;
     }
 
-    public Double getCash() {
-        return cash;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCash(Double cash) {
-        this.cash = cash;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-    public Double getNetWorth() {
-        return netWorth;
-    }
-
-    public void setNetWorth(Double netWorth) {
-        this.netWorth = netWorth;
-    }
-
 }
