@@ -1,0 +1,12 @@
+CREATE TABLE conygre.accounts (
+                                  id INT NOT NULL AUTO_INCREMENT,
+                                  name VARCHAR(45) NOT NULL,
+                                  cash DECIMAL(13,2) NOT NULL,
+                                  networth DECIMAL(13,2) NOT NULL,
+                                  PRIMARY KEY (id));
+CREATE TABLE conygre.invests_in (
+                                    id INT NOT NULL AUTO_INCREMENT,
+                                    account_id INT NOT NULL,
+                                    stock VARCHAR(45) NOT NULL,
+                                    shares INT NOT NULL,
+                                    PRIMARY KEY (id));
