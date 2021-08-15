@@ -14,7 +14,7 @@ public class Transaction implements Serializable {
     @Column(name="account_id")
     private int accountId;
     @Column(name="date")
-    private Date date;
+    private String date;
     @Column(name="b_or_s")
     private Character b_or_s;
     @Column(name="stock_name")
@@ -27,7 +27,7 @@ public class Transaction implements Serializable {
     public Transaction() {
     }
 
-    public Transaction(int id, int account_id, Date date, Character b_or_s, String stock_name, Integer shares, Double price_per_share) {
+    public Transaction(int id, int account_id, String date, Character b_or_s, String stock_name, Integer shares, Double price_per_share) {
         this.id = id;
         this.accountId = account_id;
         this.date = date;
@@ -53,11 +53,11 @@ public class Transaction implements Serializable {
         this.accountId = account_id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
