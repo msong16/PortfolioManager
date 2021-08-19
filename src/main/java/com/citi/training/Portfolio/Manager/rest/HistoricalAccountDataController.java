@@ -78,4 +78,9 @@ public class HistoricalAccountDataController {
     public List<HistoricalAccountData> getYearToDateHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
         return historicalAccountDataService.getYearToDateData(date,id);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/current")
+    public HistoricalAccountData getCurrentAccountDataById(@PathVariable("id")  int id) {
+        return historicalAccountDataService.getDataById(id).get(historicalAccountDataService.getDataById(id).size() -1);
+    }
 }
