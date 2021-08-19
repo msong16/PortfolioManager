@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,11 +28,12 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
     }
 
     @Override
-    public List<HistoricalAccountData> getDataById(int id){
-        //List<HistoricalAccountData> data =  historicalAccountDataRepository.findAll();
-        //List<HistoricalAccountData> data =  historicalAccountDataRepository.findAllByAccount_id(id);
+    public List<HistoricalAccountData> getDataById(int id){ //using account id
        return historicalAccountDataRepository.findAllByAccountId(id);
-       //return null;
-        //return data;
     }
+
+    public List<HistoricalAccountData> getDataByDateAndId(Date date, int id){
+        return historicalAccountDataRepository.findHistoricalAccountDataByDateAndAccountId(date, id);
+    }
+
 }
