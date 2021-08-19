@@ -39,8 +39,48 @@ public class HistoricalAccountDataController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/date/{id}/{date}")
     public List<HistoricalAccountData> getHistoricalAccountDataByDateAndId(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
-        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        //Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         //return historicalAccountDataService.getDataByDateAndId(formatter.format(date), id);
         return historicalAccountDataService.getDataByDateAndId(date, id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/lastweek/{id}/{date}")
+    public List<HistoricalAccountData> getLastWeekHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getLastWeeksData(date,id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/lastmonth/{id}/{date}")
+    public List<HistoricalAccountData> getLastMonthHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getLastMonthsData(date,id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/pastmonth/{id}/{date}")
+    public List<HistoricalAccountData> getPastMonthHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getPastMonthsData(date,id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/lastquarter/{id}/{date}")
+    public List<HistoricalAccountData> getLastQuarterHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getLastQuarterData(date,id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/pastyear/{id}/{date}")
+    public List<HistoricalAccountData> getPastYearHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getPastYearData(date,id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/lastyear/{id}/{date}")
+    public List<HistoricalAccountData> getLastYearHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getLastYearData(date,id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/yeartodate/{id}/{date}")
+    public List<HistoricalAccountData> getYearToDateHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getYearToDateData(date,id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}/current")
+    public HistoricalAccountData getCurrentAccountDataById(@PathVariable("id")  int id) {
+        return historicalAccountDataService.getDataById(id).get(historicalAccountDataService.getDataById(id).size() -1);
     }
 }
