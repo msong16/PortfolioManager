@@ -12,6 +12,7 @@ public interface HistoricalAccountDataService {
     //Iterable<HistoricalAccountData> getHistory();
     List<HistoricalAccountData> getLastWeeksData(Date currentDate, int id);
     List<HistoricalAccountData> getLastMonthsData(Date currentDate, int id);
+    List<HistoricalAccountData> getLastQuarterData(Date currentDate, int id);
     List<HistoricalAccountData> getPastMonthsData(Date currentDate, int id);
     List<HistoricalAccountData> getDataById(int id);
     List<HistoricalAccountData> getDataByDateAndId(Date date, int id);

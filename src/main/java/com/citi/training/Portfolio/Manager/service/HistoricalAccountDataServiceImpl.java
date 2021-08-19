@@ -60,4 +60,12 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
         Date startDate = cal.getTime();
         return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(startDate,currentDate,id);
     }
+
+    public List<HistoricalAccountData> getLastQuarterData(Date currentDate, int id){
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.setTime(currentDate);
+        cal.add(Calendar.MONTH,-4);
+        Date startDate = cal.getTime();
+        return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(startDate,currentDate,id);
+    }
 }

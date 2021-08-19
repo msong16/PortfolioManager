@@ -58,4 +58,9 @@ public class HistoricalAccountDataController {
     public List<HistoricalAccountData> getPastMonthHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
         return historicalAccountDataService.getPastMonthsData(date,id);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/lastquarter/{id}/{date}")
+    public List<HistoricalAccountData> getLastQuarterHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getLastQuarterData(date,id);
+    }
 }
