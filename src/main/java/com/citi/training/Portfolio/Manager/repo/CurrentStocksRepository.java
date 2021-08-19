@@ -10,5 +10,5 @@ import java.util.List;
 public interface CurrentStocksRepository extends JpaRepository<CurrentStocks,Integer>{
 
     List<CurrentStocks> getCurrentStocksByAccountId(int accountsId);
-    List<CurrentStocks> getCurrentStocksByAccountIdAndStockName(int accountId, String stockName);
+    CurrentStocks getCurrentStocksByAccountIdAndStockName(int accountId, String stockName);
 }

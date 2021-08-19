@@ -29,7 +29,7 @@ public class CurrentStocksController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/accountIdAndStockName/{accountId}{stockName}")
-    public List<CurrentStocks> findCurrentStocksByAccountIdAndStockName(@PathVariable("accountId")int accountID, @PathVariable("stockName")String stockName){
+    public CurrentStocks findCurrentStocksByAccountIdAndStockName(@PathVariable("accountId")int accountID, @PathVariable("stockName")String stockName){
         return currentStocksService.getCurrentStocksByAccountIdAndStockName(accountID,stockName);
     }
 
@@ -37,4 +37,11 @@ public class CurrentStocksController {
     public void addCurrentStocks(CurrentStocks currentStocks){
         currentStocksService.addCurrentStocks(currentStocks);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void deleteCurrentStocksByAccountIdAndStockName(int accountId, String stockName){
+        currentStocksService.deleteCurrentStocksByAccountIdAndStockName(accountId,stockName);
+    }
+
+
 }

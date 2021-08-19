@@ -24,13 +24,31 @@ public class CurrentStocksServiceImpl implements CurrentStocksService {
     }
 
     @Override
-    public List<CurrentStocks> getCurrentStocksByAccountIdAndStockName(int accountId, String stockName) {
+    public CurrentStocks getCurrentStocksByAccountIdAndStockName(int accountId, String stockName) {
         return repo.getCurrentStocksByAccountIdAndStockName(accountId,stockName);
     }
 
     @Override
     public void addCurrentStocks(CurrentStocks currentStocks) {
         currentStocks.setId(0);
+        repo.save(currentStocks);
+    }
+
+    @Override
+    public void deleteCurrentStocksByAccountIdAndStockName(int accountId, String stockName) {
+        CurrentStocks currentStocks = repo.getCurrentStocksByAccountIdAndStockName(accountId,stockName);
+        if(currentStocks!=null){
+            if(currentStocks.getShares()!=0) {
+                repo.delete(currentStocks);
+            }
+        }
+
+    }
+
+    @Override
+    public void updateSharesByAccountIdAndStockName(int accountId, String stockName, int shares) {
+        CurrentStocks currentStocks = repo.getCurrentStocksByAccountIdAndStockName(accountId,stockName);
+        currentStocks.setShares(shares);
         repo.save(currentStocks);
     }
 }
