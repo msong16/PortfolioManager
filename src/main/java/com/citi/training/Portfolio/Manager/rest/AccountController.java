@@ -24,6 +24,17 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public Account getAccountById(@PathVariable("id") int id) {
+        return accountService.getAccountById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "byName/{name}")
+    public Account getAccountByFullName(@PathVariable("name") String name) {
+        return accountService.getAccountByFullName(name);
+    }
+
+
     @RequestMapping(method = RequestMethod.POST)
     public void createAccount(@RequestBody Account account) {
 
@@ -31,5 +42,14 @@ public class AccountController {
         //maybe a log for successful account creation? or if there were issues
         //send a different api response method
     }
+/*
+    @RequestMapping(method = RequestMethod.DELETE, value = "removeAccount/{id}")
+    public void deleteAccount(@PathVariable("id") int id) {
+
+        accountService.deleteAccountById(id);
+        //maybe a log for successful account deletion? or if there were issues
+        //send a different api response method
+
+    }*/
 
 }
