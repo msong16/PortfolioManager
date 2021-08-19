@@ -39,8 +39,13 @@ public class HistoricalAccountDataController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/date/{id}/{date}")
     public List<HistoricalAccountData> getHistoricalAccountDataByDateAndId(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
-        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        //Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         //return historicalAccountDataService.getDataByDateAndId(formatter.format(date), id);
         return historicalAccountDataService.getDataByDateAndId(date, id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/lastweek/{id}/{date}")
+    public List<HistoricalAccountData> getLastWeekHistoricalAccountDataById(@PathVariable("id")  int id,@PathVariable("date")@DateTimeFormat(pattern="yyy-MM-dd") Date date) {
+        return historicalAccountDataService.getLastWeeksData(date,id);
     }
 }

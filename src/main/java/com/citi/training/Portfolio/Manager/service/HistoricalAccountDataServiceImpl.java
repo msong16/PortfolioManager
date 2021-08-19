@@ -11,10 +11,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.time.ZoneId;
+import java.util.*;
 
 @Service
 public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataService {
@@ -36,4 +34,11 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
         return historicalAccountDataRepository.findHistoricalAccountDataByDateAndAccountId(date, id);
     }
 
+    public List<HistoricalAccountData> getLastWeeksData(Date currentDate, int id){
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.setTime(currentDate);
+        cal.add(Calendar.DATE,-7); //subtract 7 days from currentdate
+        Date startDate = cal.getTime();
+        return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(startDate,currentDate,id);
+    }
 }
