@@ -68,4 +68,32 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
         Date startDate = cal.getTime();
         return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(startDate,currentDate,id);
     }
+
+    public List<HistoricalAccountData> getPastYearData(Date currentDate, int id){ //get past year (last 365 days) from current date
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.setTime(currentDate);
+        cal.add(Calendar.YEAR,-1);
+        Date startDate = cal.getTime();
+        return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(startDate,currentDate,id);
+    }
+
+    public List<HistoricalAccountData> getLastYearData(Date currentDate, int id){ //get last year data by calendar year
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentDate);
+        cal.add(Calendar.YEAR, -1);
+        cal.set(Calendar.DAY_OF_YEAR,1);
+        Date firstDay = cal.getTime();
+        cal.set(Calendar.MONTH,11);
+        cal.set(Calendar.DAY_OF_MONTH,31);
+        Date lastDay = cal.getTime();
+        return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(firstDay,lastDay,id);
+    }
+
+    public List<HistoricalAccountData> getYearToDateData(Date currentDate, int id){ //get data starting from jan 1 to the current date
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentDate);
+        cal.set(Calendar.DAY_OF_YEAR,1);
+        Date firstDay = cal.getTime();
+        return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(firstDay,currentDate,id);
+    }
 }
