@@ -12,8 +12,6 @@ import java.util.List;
 @Repository
 public interface HistoricalAccountDataRepository extends JpaRepository<HistoricalAccountData,Integer> {
 
-    //public Iterable<HistoricalAccountData> findByAccount_id(int id);
-    //public List<HistoricalAccountData> findAllByAccount_id(Integer id);
     List<HistoricalAccountData> findAllByAccountId(int id);
     List<HistoricalAccountData> findHistoricalAccountDataByDateAndAccountId(Date date, int id);
     List<HistoricalAccountData> findHistoricalAccountDataByDateBetweenAndAccountId(Date startDate, Date endDate, int id);

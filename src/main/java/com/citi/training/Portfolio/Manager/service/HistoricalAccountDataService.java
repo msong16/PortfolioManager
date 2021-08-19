@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface HistoricalAccountDataService {
-    //Iterable<HistoricalAccountData> getHistory();
+
     List<HistoricalAccountData> getLastWeeksData(Date currentDate, int id);
     List<HistoricalAccountData> getLastMonthsData(Date currentDate, int id);
     List<HistoricalAccountData> getLastQuarterData(Date currentDate, int id);
