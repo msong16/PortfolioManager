@@ -16,4 +16,6 @@ public interface HistoricalAccountDataRepository extends JpaRepository<Historica
     //public List<HistoricalAccountData> findAllByAccount_id(Integer id);
     List<HistoricalAccountData> findAllByAccountId(int id);
     List<HistoricalAccountData> findHistoricalAccountDataByDateAndAccountId(Date date, int id);
+    HistoricalAccountData findFirstByAccountIdOrderByDateDesc(int id);
+
 }
