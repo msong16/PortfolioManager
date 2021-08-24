@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/historicalaccountdata")
+@CrossOrigin
 public class HistoricalAccountDataController {
 
     @Autowired
