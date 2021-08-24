@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name="historicalaccountdata")
+@Table(name="historicalAccountData")
 public class HistoricalAccountData implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
