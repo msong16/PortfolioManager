@@ -21,4 +21,5 @@ public interface HistoricalAccountDataService {
     List<HistoricalAccountData> getDataByDateAndId(Date date, int id);
     Iterable<HistoricalAccountData> getAllData();
     double updateCash(char action, int accountId, double amount);
+    HistoricalAccountData getLatestAccountDataById(int id);
 }

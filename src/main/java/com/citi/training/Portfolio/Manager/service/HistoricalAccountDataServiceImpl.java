@@ -41,6 +41,11 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
     }
 
     @Override
+    public HistoricalAccountData getLatestAccountDataById(int id) {
+        return historicalAccountDataRepository.findFirstByAccountIdOrderByDateDesc(id);
+    }
+
+    @Override
     public List<HistoricalAccountData> getDataById(int id){ //using account id
        return historicalAccountDataRepository.findAllByAccountId(id);
     }
