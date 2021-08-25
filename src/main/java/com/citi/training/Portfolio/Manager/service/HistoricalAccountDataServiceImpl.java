@@ -26,14 +26,28 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
     }
 
     @Override
+    public double updateCash(char action, int accountId, double amount) {
+        HistoricalAccountData recentAccountData = historicalAccountDataRepository.findFirstByAccountIdOrderByDateDesc(accountId);
+        double newCashAmount = recentAccountData.getCash();
+        if(action == 'D') {
+            newCashAmount += amount;
+        } else if (action == 'W') {
+            newCashAmount -= amount;
+        }
+
+        recentAccountData.setCash(newCashAmount);
+        historicalAccountDataRepository.save(recentAccountData);
+        return recentAccountData.getCash();
+    }
+
+    @Override
     public List<HistoricalAccountData> getDataById(int id){ //using account id
        return historicalAccountDataRepository.findAllByAccountId(id);
     }
 
-    public List<HistoricalAccountData> getDataByDateAndId(Date date, int id){
+    public List<HistoricalAccountData> getDataByDateAndId(Date date, int id) {
         return historicalAccountDataRepository.findHistoricalAccountDataByDateAndAccountId(date, id);
     }
-
     public List<HistoricalAccountData> getLastWeeksData(Date currentDate, int id){
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(currentDate);
