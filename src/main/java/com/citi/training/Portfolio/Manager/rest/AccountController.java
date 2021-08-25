@@ -13,6 +13,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/accounts")
+@CrossOrigin
 public class AccountController {
 
     @Autowired
