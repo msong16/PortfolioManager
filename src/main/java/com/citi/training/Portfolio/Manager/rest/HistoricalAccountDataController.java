@@ -41,6 +41,11 @@ public class HistoricalAccountDataController {
         return historicalAccountDataService.getDataByDateAndId(date, id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "latestAccountData/{id}")
+    public HistoricalAccountData getLatestAccountDataById(@PathVariable("id") int id) {
+        return historicalAccountDataService.getLatestAccountDataById(id);
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/depositCash/{accountId}/{amount}")
     public double depositCash(@PathVariable("accountId") int accountId, @PathVariable("amount") double amount) {
         return historicalAccountDataService.updateCash('D', accountId, amount);
