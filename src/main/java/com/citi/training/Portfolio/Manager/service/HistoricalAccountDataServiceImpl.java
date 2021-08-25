@@ -34,6 +34,7 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
         } else if (action == 'W') {
             newCashAmount -= amount;
         }
+
         recentAccountData.setCash(newCashAmount);
         historicalAccountDataRepository.save(recentAccountData);
         return recentAccountData.getCash();

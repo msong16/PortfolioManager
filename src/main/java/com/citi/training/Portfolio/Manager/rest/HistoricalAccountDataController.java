@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Entity;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,7 +42,7 @@ public class HistoricalAccountDataController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/depositCash/{accountId}/{amount}")
-    public double addCash(@PathVariable("accountId") int accountId, @PathVariable("amount") double amount) {
+    public double depositCash(@PathVariable("accountId") int accountId, @PathVariable("amount") double amount) {
         return historicalAccountDataService.updateCash('D', accountId, amount);
     }
 
