@@ -1,18 +1,14 @@
 package com.citi.training.Portfolio.Manager.rest;
 
-import com.citi.training.Portfolio.Manager.entities.Account;
 import com.citi.training.Portfolio.Manager.entities.HistoricalAccountData;
-import com.citi.training.Portfolio.Manager.service.AccountService;
 import com.citi.training.Portfolio.Manager.service.HistoricalAccountDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Entity;
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -43,6 +39,21 @@ public class HistoricalAccountDataController {
         //Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         //return historicalAccountDataService.getDataByDateAndId(formatter.format(date), id);
         return historicalAccountDataService.getDataByDateAndId(date, id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "latestAccountData/{id}")
+    public HistoricalAccountData getLatestAccountDataById(@PathVariable("id") int id) {
+        return historicalAccountDataService.getLatestAccountDataById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/depositCash/{accountId}/{amount}")
+    public double depositCash(@PathVariable("accountId") int accountId, @PathVariable("amount") double amount) {
+        return historicalAccountDataService.updateCash('D', accountId, amount);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/withdrawalCash/{accountId}/{amount}")
+    public double withdrawalCash(@PathVariable("accountId") int accountId, @PathVariable("amount") double amount) {
+        return historicalAccountDataService.updateCash('W', accountId, amount);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/lastweek/{id}/{date}")
