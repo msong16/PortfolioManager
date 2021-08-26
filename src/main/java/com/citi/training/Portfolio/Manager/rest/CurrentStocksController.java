@@ -34,7 +34,7 @@ public class CurrentStocksController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void addCurrentStocks(CurrentStocks currentStocks){
+    public void addCurrentStocks(@RequestBody CurrentStocks currentStocks){
         currentStocksService.addCurrentStocks(currentStocks);
     }
 
