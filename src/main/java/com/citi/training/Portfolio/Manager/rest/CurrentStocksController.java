@@ -38,9 +38,14 @@ public class CurrentStocksController {
         currentStocksService.addCurrentStocks(currentStocks);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public void deleteCurrentStocksByAccountIdAndStockName(@RequestBody int accountId, @RequestBody String stockName){
-        currentStocksService.deleteCurrentStocksByAccountIdAndStockName(accountId,stockName);
+//    @RequestMapping(method = RequestMethod.DELETE)
+//    public void deleteCurrentStocksByAccountIdAndStockName(@RequestBody int accountId, @RequestBody String stockName){
+//        currentStocksService.deleteCurrentStocksByAccountIdAndStockName(accountId,stockName);
+//    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+    public void deleteCurrentStocks(@PathVariable("id") int id) {
+        currentStocksService.deleteCurrentStocks(id);
     }
 
 

@@ -51,4 +51,9 @@ public class CurrentStocksServiceImpl implements CurrentStocksService {
         currentStocks.setShares(shares);
         repo.save(currentStocks);
     }
+
+    @Override
+    public void deleteCurrentStocks(int id) {
+        repo.deleteById(id);
+    }
 }

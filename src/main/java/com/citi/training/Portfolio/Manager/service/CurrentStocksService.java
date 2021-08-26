@@ -11,4 +11,5 @@ public interface CurrentStocksService {
     void addCurrentStocks(CurrentStocks currentStocks);
     void deleteCurrentStocksByAccountIdAndStockName(int accountId, String stockName);
     void updateSharesByAccountIdAndStockName(int accountId, String stockName, int shares);
+    void deleteCurrentStocks(int id);
 }
