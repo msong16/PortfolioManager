@@ -39,7 +39,7 @@ public class CurrentStocksController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public void deleteCurrentStocksByAccountIdAndStockName(int accountId, String stockName){
+    public void deleteCurrentStocksByAccountIdAndStockName(@RequestBody int accountId, @RequestBody String stockName){
         currentStocksService.deleteCurrentStocksByAccountIdAndStockName(accountId,stockName);
     }
 
