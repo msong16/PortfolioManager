@@ -39,7 +39,7 @@ public class TransactionController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void addTransaction(Transaction transaction){
+    public void addTransaction(@RequestBody Transaction transaction){
         transactionService.addTransaction(transaction);
     }
 }
