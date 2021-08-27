@@ -17,5 +17,6 @@ public interface HistoricalAccountDataRepository extends JpaRepository<Historica
     List<HistoricalAccountData> findAllByAccountId(int id);
     List<HistoricalAccountData> findHistoricalAccountDataByDateAndAccountId(Date date, int id);
     HistoricalAccountData findFirstByAccountIdOrderByDateDesc(int id);
-    List<HistoricalAccountData> findHistoricalAccountDataByDateBetweenAndAccountId(Date startDate, Date endDate, int id);
+    //List<HistoricalAccountData> findHistoricalAccountDataByDateBetweenAndAccountId(Date startDate, Date endDate, int id);
+    List<HistoricalAccountData> findHistoricalAccountDataByDateBetweenAndAccountIdOrderByDateAsc(Date startDate, Date endDate, int id);
 }
