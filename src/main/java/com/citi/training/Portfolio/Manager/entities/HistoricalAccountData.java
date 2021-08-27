@@ -25,9 +25,9 @@ public class HistoricalAccountData implements Serializable{
 
     public HistoricalAccountData() {}
 
-    public HistoricalAccountData(int id, int accountId, Date date, Double cash,Double investment, Double networth) {
+    public HistoricalAccountData(int id, int account_id, Date date, Double cash,Double investment, Double networth) {
         this.id = id;
-        this.accountId = accountId;
+        this.accountId = account_id;
         this.date = date;
         this.cash = cash;
         this.investment = investment;
@@ -47,7 +47,7 @@ public class HistoricalAccountData implements Serializable{
     }
 
     public void setAccountId(int account_id) {
-        this.accountId = accountId;
+        this.accountId = account_id;
     }
 
     public Date getDate() {

@@ -45,6 +45,7 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
         return historicalAccountDataRepository.findFirstByAccountIdOrderByDateDesc(id);
     }
 
+
     @Override
     public List<HistoricalAccountData> getDataById(int id){ //using account id
        return historicalAccountDataRepository.findAllByAccountId(id);
@@ -114,5 +115,11 @@ public class HistoricalAccountDataServiceImpl implements HistoricalAccountDataSe
         cal.set(Calendar.DAY_OF_YEAR,1);
         Date firstDay = cal.getTime();
         return historicalAccountDataRepository.findHistoricalAccountDataByDateBetweenAndAccountId(firstDay,currentDate,id);
+    }
+
+    @Override
+    public void addHistoricalData(HistoricalAccountData historicalAccountData) {
+        historicalAccountDataRepository.save(historicalAccountData);
+        System.out.println(historicalAccountDataRepository.findFirstByAccountIdOrderByDateDesc(1).getDate());
     }
 }

@@ -1,6 +1,7 @@
 package com.citi.training.Portfolio.Manager.rest;
 
 import com.citi.training.Portfolio.Manager.entities.HistoricalAccountData;
+import com.citi.training.Portfolio.Manager.entities.Transaction;
 import com.citi.training.Portfolio.Manager.service.HistoricalAccountDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -95,4 +96,9 @@ public class HistoricalAccountDataController {
     public HistoricalAccountData getCurrentAccountDataById(@PathVariable("id")  int id) {
         return historicalAccountDataService.getDataById(id).get(historicalAccountDataService.getDataById(id).size() -1);
     }
+    @RequestMapping(method = RequestMethod.POST)
+    public void addHistoricalData(@RequestBody HistoricalAccountData historicalAccountData){
+        historicalAccountDataService.addHistoricalData(historicalAccountData);
+    }
+
 }
